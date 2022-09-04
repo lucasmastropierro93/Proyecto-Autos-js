@@ -35,7 +35,7 @@ for (const objeto of autos) {
 let preguntaAgregarAuto = prompt("Quieres agregar un nuevo auto?"
 + " Selecciona un opción \n 1 - No \n 2 - Si");
 
-if (preguntaAgregarAuto = 2) {
+if (preguntaAgregarAuto > 1) {
    
         let entrada = prompt("ingresa modelo");
         autos.push(entrada);
@@ -50,6 +50,45 @@ if (preguntaAgregarAuto = 2) {
         console.log(objeto);
     }
 }
+
+
+const resultado = autos.some((el) => el.modelo == "onix")
+const resultado2 = autos.some((el) => el.modelo == "celta")
+
+
+console.log(resultado);
+console.log(resultado2);
+
+
+const precio = autos.map((precios)=>{
+
+    return precios.marca;
+
+});
+
+const actualizarPrecio = autos.map ((precios)=>{
+return {
+    id: precios.id,
+    modelo: precios.modelo,
+    marca: precios.marca,
+    precio: precios.precio * 2 ,
+
+};
+
+
+});
+
+console.log(actualizarPrecio);
+
+
+
+const masBarato = autos.filter (modelo => modelo.precio < 3000000)
+
+console.log(masBarato);
+
+
+
+
 
 
 

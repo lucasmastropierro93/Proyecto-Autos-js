@@ -1,24 +1,126 @@
 const autos = [
-{id: 1, modelo:"207", marca: "peugeot", precio:"2500000"},
-{id: 2, modelo:"308", marca: "peugeot", precio:"3500000"},
-{id: 3, modelo:"3008", marca: "peugeot", precio:"4500000"},
-{id: 4, modelo:"corolla", marca: "toyota", precio:"2400000"},
-{id: 5, modelo:"fiesta", marca: "ford", precio:"2700000"},
-{id: 6, modelo:"onix", marca: "chevrolet", precio:"2900000"},
-{id: 7, modelo:"golf", marca: "volkswagen", precio:"3700000"},
-{id: 8, modelo:"corsa", marca: "chevrolet", precio:"1600000"},
+    { id: 1, modelo: "207", marca: "peugeot", precio: "2500000", img: "207.jpg" },
+    { id: 2, modelo: "rcz", marca: "peugeot", precio: "3500000", img: "rcz.jpg" },
+    { id: 3, modelo: "x6", marca: "bmw", precio: "4500000", img: "x6.jpg" },
+    { id: 4, modelo: "corolla", marca: "toyota", precio: "2400000", img: "corolla.jpg" },
+    { id: 5, modelo: "focus", marca: "ford", precio: "2700000", img: "focus.jpg" },
+    { id: 6, modelo: "cruze", marca: "chevrolet", precio: "2900000", img: "cruze.jpg" },
+    { id: 7, modelo: "mito", marca: "alfa romeo", precio: "3700000", img: "mito.jpg" },
+    { id: 8, modelo: "clio", marca: "renault", precio: "1600000", img: "clio.jpg" },
 ];
 
 console.log(autos);
 
-function auto(id, modelo, marca, precio) {
+function auto(id, modelo, marca, precio, img) {
     this.id = id;
     this.modelo = modelo;
     this.marca = marca;
     this.precio = precio;
-
+    this.img = img;
 }
 
+const h1 = document.getElementById("h1");
+const h2 = document.getElementById("h2");
+const lista = document.getElementById("lista");
+const card = document.querySelectorAll("card");
+const a = document.getElementById("a");
+const a1 = document.getElementById("a1");
+const a2 = document.getElementById("a2");
+const a3 = document.getElementById("a3");
+const botonSearch = document.querySelector("#botonSearch");
+const inputSearch = document.querySelector("#inputSearch");
+
+
+h1.innerText = "Probando contenido dinamico";
+
+// AGREGANDO CONTENIDO A FAVORITOS MEDIANTE EVENTO CLICK
+a.addEventListener('click', () => {
+    let li = document.createElement('li')
+    li.innerHTML = `
+    <div class="card p-3" style="width: 18rem;">
+                <img src="/img/207.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Peugeot</h5>
+                  <p class="card-text">207</p>
+                  <h5 class="card-text2">Precio: </h5>
+                  <a href="#" class="btn btn-primary" id="a">Agregar a favoritos</a>
+                </div>
+              </div>
+    `
+    lista.append(li)
+})
+
+a1.addEventListener('click', () => {
+    let li1 = document.createElement('li')
+    li1.innerHTML = `
+    <div class="card p-3" style="width: 18rem;">
+                <img src="/img/focus.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Ford</h5>
+                  <p class="card-text">Focus</p>
+                  <h5 class="card-text2">Precio: </h5>
+                  <a href="#" class="btn btn-primary" id="a1">Agregar a favoritos</a>
+                </div>
+              </div>
+    `
+    lista.append(li1)
+})
+a2.addEventListener('click', () => {
+    let li2 = document.createElement('li')
+    li2.innerHTML = `
+    <div class="card p-3" style="width: 18rem;">
+                <img src="/img/clio.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Renault</h5>
+                  <p class="card-text">Clio</p>
+                  <h5 class="card-text2">Precio: </h5>
+                  <a href="#" class="btn btn-primary" id="a2">Agregar a favoritos</a>
+                </div>
+              </div>
+    `
+    lista.append(li2)
+})
+a3.addEventListener('click', () => {
+    let li3 = document.createElement('li')
+    li3.innerHTML = `
+    <div class="card p-3" style="width: 18rem;">
+                <img src="/img/rcz.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Peugeot</h5>
+                  <p class="card-text">Rcz</p>
+                  <h5 class="card-text2">Precio: </h5>
+                  <a href="#" class="btn btn-primary" id="a3">Agregar a favoritos</a>
+                </div>
+              </div>
+    `
+    lista.append(li3)
+})
+
+// BUSQUEDA Y FILTRADO POR CONSOLA MEDIANTE EVENT CLICK
+
+function filtrarModelo(arr, filtro) {
+    const filtrado = arr.filter(el => {
+        return el.modelo.includes(filtro);
+    })
+    return filtrado;
+}
+botonSearch.addEventListener('click', () => {
+    let resultado = filtrarModelo(autos, inputSearch.value)
+    console.log(resultado);
+
+})
+
+// RESULTADO DE BUSQUEDA EN HTML 
+
+inputSearch.addEventListener('input', () => {
+let resultado = filtrarModelo(autos, inputSearch.value)
+h2.innerText = "Busqueda: " + `${resultado[0].modelo}`;
+})
+
+
+
+
+/*
 const nuevoAuto = new auto(9, "focus", "ford", "3000000");
 
 function cargarAuto(arr,valor) {
@@ -85,6 +187,7 @@ console.log(actualizarPrecio);
 const masBarato = autos.filter (modelo => modelo.precio < 3000000)
 
 console.log(masBarato);
+*/
 
 
 

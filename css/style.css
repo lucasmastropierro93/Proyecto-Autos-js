@@ -1,5 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
 h1 {
-    color: salmon;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 040px;
+        
+}
+h2 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 30px;
+}
+body {
+    font-size: 15px;
+    background-color: rgb(194, 168, 168);
+    font-weight: bold;
+}
+
+
+/*  BARRA D NAVEGACION */ 
+
+.titulo__barra-nav {
+background-color:grey;
+border-radius: 10px;
+padding: 10px;
+color: white;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+font-size: 20px;
+}
+
+.buscador__barra-nav {
+    font-size: 15px;
+}
+
+
+/* HERO */ 
+.hero {
+    position: relative;
+    overflow: hidden;
+}
+
+
+.hero__overlay-boton {
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.hero__boton {
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+.favoritos__barra-h3 {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
 }

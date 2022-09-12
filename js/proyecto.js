@@ -49,11 +49,11 @@ function agregarAfavoritosClicked(event) {
     const cardText = card.querySelector('.card-text').textContent;
     const cardText2 = card.querySelector('.card-text2').textContent;
     const cardImg = card.querySelector('.card-img-top').src;
-    
-    agregandoAfavoritos(card,cardImg,cardTitle,cardText,cardText2)
+
+    agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2)
 }
 
-function agregandoAfavoritos(card,cardImg,cardTitle,cardText,cardText2) {
+function agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2) {
     const cardDiv = document.createElement('div')
     const cardContenido = `
     <div class="row favoritos__contenido contenedor">
@@ -74,69 +74,7 @@ function agregandoAfavoritos(card,cardImg,cardTitle,cardText,cardText2) {
     contenedor.append(cardDiv);
 }
 
-/*
-a.addEventListener('click', () => {
-    let li = document.createElement('li')
-    li.innerHTML = `
-    <div class="card p-3" style="width: 18rem;">
-                <img src="/img/207.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Peugeot</h5>
-                  <p class="card-text">207</p>
-                  <h5 class="card-text2">Precio: </h5>
-                  <a href="#" class="btn btn-primary" id="a">Agregar a favoritos</a>
-                </div>
-              </div>
-    `
-    lista.append(li)
-})
 
-a1.addEventListener('click', () => {
-    let li1 = document.createElement('li')
-    li1.innerHTML = `
-    <div class="card p-3" style="width: 18rem;">
-                <img src="/img/focus.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Ford</h5>
-                  <p class="card-text">Focus</p>
-                  <h5 class="card-text2">Precio: </h5>
-                  <a href="#" class="btn btn-primary" id="a1">Agregar a favoritos</a>
-                </div>
-              </div>
-    `
-    lista.append(li1)
-})
-a2.addEventListener('click', () => {
-    let li2 = document.createElement('li')
-    li2.innerHTML = `
-    <div class="card p-3" style="width: 18rem;">
-                <img src="/img/clio.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Renault</h5>
-                  <p class="card-text">Clio</p>
-                  <h5 class="card-text2">Precio: </h5>
-                  <a href="#" class="btn btn-primary" id="a2">Agregar a favoritos</a>
-                </div>
-              </div>
-    `
-    lista.append(li2)
-})
-a3.addEventListener('click', () => {
-    let li3 = document.createElement('li')
-    li3.innerHTML = `
-    <div class="card p-3" style="width: 18rem;">
-                <img src="/img/rcz.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Peugeot</h5>
-                  <p class="card-text">Rcz</p>
-                  <h5 class="card-text2">Precio: </h5>
-                  <a href="#" class="btn btn-primary" id="a3">Agregar a favoritos</a>
-                </div>
-              </div>
-    `
-    lista.append(li3)
-})
-*/
 // BUSQUEDA Y FILTRADO POR CONSOLA MEDIANTE EVENT CLICK
 
 function filtrarModelo(arr, filtro) {

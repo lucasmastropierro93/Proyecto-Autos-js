@@ -64,6 +64,8 @@ font-size: 20px;
     margin-top: 0px;
 }
 
+/* FAVORITOS */ 
+
 .favoritos__barra-h3 {
     display: flex;
     background-color: white;
@@ -71,4 +73,9 @@ font-size: 20px;
     padding: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 20px;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
 }

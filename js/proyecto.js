@@ -29,11 +29,52 @@ const a2 = document.getElementById("a2");
 const a3 = document.getElementById("a3");
 const botonSearch = document.querySelector("#botonSearch");
 const inputSearch = document.querySelector("#inputSearch");
-
+const contenedor = document.querySelector('.contenedor')
 
 h1.innerText = "Probando contenido dinamico";
 
 // AGREGANDO CONTENIDO A FAVORITOS MEDIANTE EVENTO CLICK
+
+
+const agregarAFavoritos = document.querySelectorAll('.agregarAfavoritos');
+
+agregarAFavoritos.forEach(agregar => {
+    agregar.addEventListener('click', agregarAfavoritosClicked);
+})
+
+function agregarAfavoritosClicked(event) {
+    const button = event.target;
+    const card = button.closest('.card');
+    const cardTitle = card.querySelector('.card-title').textContent;
+    const cardText = card.querySelector('.card-text').textContent;
+    const cardText2 = card.querySelector('.card-text2').textContent;
+    const cardImg = card.querySelector('.card-img-top').src;
+    
+    agregandoAfavoritos(card,cardImg,cardTitle,cardText,cardText2)
+}
+
+function agregandoAfavoritos(card,cardImg,cardTitle,cardText,cardText2) {
+    const cardDiv = document.createElement('div')
+    const cardContenido = `
+    <div class="row favoritos__contenido contenedor">
+          
+          <div class="card p-3 " style="width: 18rem;">
+            <img src=${cardImg} class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${cardTitle}</h5>
+              <p class="card-text">${cardText}</p>
+              <h5 class="card-text2">${cardText2}</h5>
+              
+              <button type="button" class="btn btn-danger">X</button>
+            </div>
+
+          </div>
+    `;
+    cardDiv.innerHTML = cardContenido
+    contenedor.append(cardDiv);
+}
+
+/*
 a.addEventListener('click', () => {
     let li = document.createElement('li')
     li.innerHTML = `
@@ -95,7 +136,7 @@ a3.addEventListener('click', () => {
     `
     lista.append(li3)
 })
-
+*/
 // BUSQUEDA Y FILTRADO POR CONSOLA MEDIANTE EVENT CLICK
 
 function filtrarModelo(arr, filtro) {
@@ -113,8 +154,8 @@ botonSearch.addEventListener('click', () => {
 // RESULTADO DE BUSQUEDA EN HTML 
 
 inputSearch.addEventListener('input', () => {
-let resultado = filtrarModelo(autos, inputSearch.value)
-h2.innerText = "Busqueda: " + `${resultado[0].modelo}`;
+    let resultado = filtrarModelo(autos, inputSearch.value)
+    h2.innerText = "Busqueda: " + `${resultado[0].modelo}`;
 })
 
 

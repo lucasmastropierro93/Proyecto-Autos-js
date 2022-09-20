@@ -51,6 +51,7 @@ font-size: 20px;
 .hero {
     position: relative;
     overflow: hidden;
+    height: 750px;
 }
 
 
@@ -60,10 +61,22 @@ font-size: 20px;
     margin-top: 20px;
 }
 .hero__boton {
-    margin-left: 10px;
+    margin-left: 32px;
     margin-top: 0px;
 }
 
+
+/* CARD */ 
+.card {
+    width: 100px;
+    height: 240px;
+}
+
+.contenido__cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
 /* FAVORITOS */ 
 
 .favoritos__barra-h3 {
@@ -77,5 +90,6 @@ font-size: 20px;
 
 .contenedor {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }

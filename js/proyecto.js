@@ -11,6 +11,16 @@ const autos = [
 
 console.log(autos);
 
+// probado destructuring de autos
+
+for (const item of autos) {
+    let {modelo, marca, precio, img} = item
+    console.log(modelo);
+    console.log(marca);
+}
+
+
+
 function auto(id, modelo, marca, precio, img) {
     this.id = id;
     this.modelo = modelo;
@@ -37,9 +47,9 @@ const botonSearchLogin = document.getElementById("botonSearchLogin");
 const checkboxLogin = document.querySelector('.checkboxLogin');
 
 
-h1.innerText = "Probando contenido dinamico";
+h1.innerText = "-Compra y venta de autos usados-";
 // agregar las CARDS MEDIANTE JS
-    
+
 function crearCards() {
     autos.forEach(auto => {
 
@@ -101,10 +111,10 @@ function agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2) {
     contenedor.append(cardDiv);
 
     cardDiv.querySelector('.botonDelete').addEventListener('click', eliminarCard)
-    
-  
 
-    
+
+
+
 }
 // funcion de ELIMINAR CARTA 
 
@@ -137,6 +147,19 @@ inputSearch.addEventListener('input', () => {
 
 // LOGIN
 
+
+
+// simplificando con operador AND &&
+
+function guardadoEnLSoST(valor) {
+    let user = { username: inputEmail.value, password: inputPassword.value }
+    valor === "sessionStorage" && sessionStorage.setItem("user", JSON.stringify(user));
+    valor === "localStorage" && localStorage.setItem("user", JSON.stringify(user));
+
+}
+
+
+/*
 function guardadoEnLSoST(valor) {
     let user = {username: inputEmail.value, password: inputPassword.value }
 if (valor === "sessionStorage") {
@@ -147,25 +170,35 @@ if (valor === "localStorage"){
 }
 return user
 }
-
-function recover(datos){
-if(datos){
-    inputEmail.value = datos.username;
-    inputPassword.value = datos.password;
-}
+*/
+function recover(datos) {
+    if (datos) {
+        inputEmail.value = datos.username;
+        inputPassword.value = datos.password;
+    }
 }
 
 recover(JSON.parse(localStorage.getItem("user")));
 
-botonSearchLogin.addEventListener('click',(e)=>{
-e.preventDefault();
-if (checkboxLogin.checked){
-    guardadoEnLSoST("localStorage");
-    console.log("guardado en Local");
-} else {
-    guardadoEnLSoST("sessionStorage");
-    console.log("guardado en Sesion");
-}
+
+// simplificando con operador ternario: | condicion ? true : false
+
+botonSearchLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    checkboxLogin.checked ? guardadoEnLSoST("localStorage") : guardadoEnLSoST("sessionStorage");
+
+})
+
+/*
+botonSearchLogin.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (checkboxLogin.checked) {
+        guardadoEnLSoST("localStorage");
+        console.log("guardado en Local");
+    } else {
+        guardadoEnLSoST("sessionStorage");
+        console.log("guardado en Sesion");
+    }
 
 });
-
+*/

@@ -8,7 +8,8 @@ const autos = [
     { id: 7, modelo: "mito", marca: "alfa romeo", precio: "3700000", img: "./img/mito.jpg" },
     { id: 8, modelo: "clio", marca: "renault", precio: "1600000", img: "./img/clio.jpg" },
 ];
-
+let favoritos = [];
+localStorage.setItem("favoritos",JSON.stringify(autos));
 console.log(autos);
 
 // probado destructuring de autos
@@ -88,7 +89,8 @@ function agregarAfavoritosClicked(event) {
     const cardText2 = card.querySelector('.card-text2').textContent;
     const cardImg = card.querySelector('.card-img-top').src;
 
-    agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2)
+    agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2);
+    
 }
 
 function agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2) {
@@ -114,8 +116,35 @@ function agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2) {
 
 
 
-
+//guardadoLocal(auto);
 }
+/*
+function guardadoLocal (auto){
+    let existe = favoritos.some(prod=>prod.id === auto.id);
+    if(existe===false){
+        auto.cantidad =1 ;
+        favoritos.push(auto);
+    }else {
+        let prodFind =favoritos.find(prod=> prod.id === auto.id);
+        alert("ya existe")
+        eliminarCard(event);
+    }
+render ();
+}
+
+function render(){
+    localStorage.setItem("favorito",JSON.stringify(favoritos))
+}
+*/
+
+
+
+
+
+
+
+
+
 // funcion de ELIMINAR CARTA 
 
 function eliminarCard(event) {
@@ -131,10 +160,15 @@ function filtrarModelo(arr, filtro) {
     })
     return filtrado;
 }
-botonSearch.addEventListener('click', () => {
-    let resultado = filtrarModelo(autos, inputSearch.value)
+botonSearch.addEventListener('click', (e) => {
+    e.preventDefault();
+    let resultado = filtrarModelo(autos, inputSearch.value);
     console.log(resultado);
-
+    Swal.fire(
+        'Filtrado exitoso!',
+        '',
+        'success'
+      )
 })
 
 // RESULTADO DE BUSQUEDA EN HTML 
@@ -186,7 +220,12 @@ recover(JSON.parse(localStorage.getItem("user")));
 botonSearchLogin.addEventListener('click', (e) => {
     e.preventDefault();
     checkboxLogin.checked ? guardadoEnLSoST("localStorage") : guardadoEnLSoST("sessionStorage");
-
+    Swal.fire(
+        'Guardado exitoso!',
+        '',
+        'success'
+      )
+      
 })
 
 /*
@@ -202,3 +241,5 @@ botonSearchLogin.addEventListener('click', (e) => {
 
 });
 */
+
+

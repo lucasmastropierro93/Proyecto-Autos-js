@@ -9,13 +9,13 @@ const autos = [
     { id: 8, modelo: "clio", marca: "renault", precio: "1600000", img: "./img/clio.jpg" },
 ];
 let favoritos = [];
-localStorage.setItem("favoritos",JSON.stringify(autos));
+localStorage.setItem("favoritos", JSON.stringify(autos));
 console.log(autos);
 
 // probado destructuring de autos
 
 for (const item of autos) {
-    let {modelo, marca, precio, img} = item
+    let { modelo, marca, precio, img } = item
     console.log(modelo);
     console.log(marca);
 }
@@ -73,8 +73,6 @@ function crearCards() {
 crearCards();
 
 // AGREGANDO CONTENIDO A FAVORITOS MEDIANTE EVENTO CLICK
-
-
 const agregarAFavoritos = document.querySelectorAll('.agregarAfavoritos');
 
 agregarAFavoritos.forEach(agregar => {
@@ -90,7 +88,7 @@ function agregarAfavoritosClicked(event) {
     const cardImg = card.querySelector('.card-img-top').src;
 
     agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2);
-    
+
 }
 
 function agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2) {
@@ -112,34 +110,12 @@ function agregandoAfavoritos(card, cardImg, cardTitle, cardText, cardText2) {
     cardDiv.innerHTML = cardContenido
     contenedor.append(cardDiv);
 
-    cardDiv.querySelector('.botonDelete').addEventListener('click', eliminarCard)
+    cardDiv.querySelector('.botonDelete').addEventListener('click', eliminarCard);
 
 
 
-//guardadoLocal(auto);
+
 }
-/*
-function guardadoLocal (auto){
-    let existe = favoritos.some(prod=>prod.id === auto.id);
-    if(existe===false){
-        auto.cantidad =1 ;
-        favoritos.push(auto);
-    }else {
-        let prodFind =favoritos.find(prod=> prod.id === auto.id);
-        alert("ya existe")
-        eliminarCard(event);
-    }
-render ();
-}
-
-function render(){
-    localStorage.setItem("favorito",JSON.stringify(favoritos))
-}
-*/
-
-
-
-
 
 
 
@@ -168,13 +144,13 @@ botonSearch.addEventListener('click', (e) => {
         'Filtrado exitoso!',
         '',
         'success'
-      )
+    )
 })
 
 // RESULTADO DE BUSQUEDA EN HTML 
 
 inputSearch.addEventListener('input', () => {
-    let resultado = filtrarModelo(autos, inputSearch.value)
+    let resultado = filtrarModelo(autos, inputSearch.value.toLowerCase())
     h2.innerText = "Busqueda: " + `${resultado[0].modelo}`;
 })
 
@@ -193,18 +169,7 @@ function guardadoEnLSoST(valor) {
 }
 
 
-/*
-function guardadoEnLSoST(valor) {
-    let user = {username: inputEmail.value, password: inputPassword.value }
-if (valor === "sessionStorage") {
-    sessionStorage.setItem("user", JSON.stringify(user));
-}
-if (valor === "localStorage"){
-    localStorage.setItem("user", JSON.stringify(user));
-}
-return user
-}
-*/
+
 function recover(datos) {
     if (datos) {
         inputEmail.value = datos.username;
@@ -224,11 +189,11 @@ botonSearchLogin.addEventListener('click', (e) => {
         'Guardado exitoso!',
         '',
         'success'
-      )
-      
+    )
+
 })
 
-/*
+
 botonSearchLogin.addEventListener('click', (e) => {
     e.preventDefault();
     if (checkboxLogin.checked) {
@@ -240,6 +205,23 @@ botonSearchLogin.addEventListener('click', (e) => {
     }
 
 });
-*/
+
+// fetch 
 
 
+
+async function fetchAPI() {
+    try {
+        const url = './js/data.json';
+        const response = await fetch(url);
+        const data = await response.json();
+        console.log(data);
+        
+        // DOMinic Toretto 
+
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+fetchAPI();

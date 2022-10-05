@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "modelo": "207",
+        "marca": "peugeot",
+        "precio": "2500000",
+        "img": "./img/207.jpg"
+    },
+    {
+        "id": 2,
+        "modelo": "rcz",
+        "marca": "peugeot",
+        "precio": "3500000",
+        "img": "./img/rcz.jpg"
+    },
+    {
+        "id": 3,
+        "modelo": "x6",
+        "marca": "bmw",
+        "precio": "4500000",
+        "img": "./img/x6.jpg"
+    },
+    {
+        "id": 4,
+        "modelo": "corolla",
+        "marca": "toyota",
+        "precio": "2400000",
+        "img": "./img/corolla.jpg"
+    },
+    {
+        "id": 5,
+        "modelo": "focus",
+        "marca": "ford",
+        "precio": "2700000",
+        "img": "./img/focus.jpg"
+    },
+    {
+        "id": 6,
+        "modelo": "cruze",
+        "marca": "chevrolet",
+        "precio": "2900000",
+        "img": "./img/cruze.jpg"
+    },
+    {
+        "id": 7,
+        "modelo": "mito",
+        "marca": "alfa romeo",
+        "precio": "3700000",
+        "img": "./img/mito.jpg"
+    },
+    {
+        "id": 8,
+        "modelo": "clio",
+        "marca": "renault",
+        "precio": "1600000",
+        "img": "./img/clio.jpg"
+    }
+]

@@ -13,8 +13,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <link rel="stylesheet" href="./css/style.css">
   <title>Car Commerce</title>
 </head>
@@ -23,7 +23,7 @@
   <header>
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container">
-        <a class="navbar-brand titulo__barra-nav" href="#">Car Commerce</a>
+        <a class="navbar-brand titulo__barra-nav" href="./index.html">Car Commerce</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -59,13 +59,27 @@
     <div class="hero container">
       <div class="hero__overlay-boton">
         <h1 id="h1" class="hero__h1">Compra y venta de los mejores autos usados</h1>
-        <h2 class="hero__h2" id="h2">Busqueda:</h2>
-        <h2 class="hero__h3-filtrado">Filtrar por precio:</h2>
+        
+        <div class="filtrado">
+
+          <div>
+            <h3 class="hero__h3-filtrado filtro">Filtrar por precio</h3>
+            <input type="text" class="inputFiltrarPrecio" placeholder="ingrese precio">
+          </div>
+          <div>
+            <h3 class="hero__h3-filtrado filtro">Filtrar por modelo</h3>
+            <input type="text" class="inputFiltrarModelo" placeholder="ingrese modelo">
+          </div>
+          <div>
+            <h3 class="hero__h3-filtrado filtro">Filtrar por Marca</h3>
+            <input type="text" class="inputFiltrarMarca" placeholder="ingrese marca">
+          </div>
+        </div>
         <button type="button" class="hero__boton btn btn-info btn-lg p-4 fs-3 fw-bold">Compra tu auto</button>
         <div class="cards contenido__cards p-3">
 
-          
-<!-- CONTENIDO DINAMICOO-->
+
+          <!-- CONTENIDO DINAMICOO-->
 
 
 
@@ -79,7 +93,7 @@
     </div>
     <section class="favoritos">
       <div>
-        <h3 class="favoritos__barra-h3">FAVORITOS</h3>
+        <h4 class="favoritos__barra-h3">FAVORITOS</h4>
       </div>
 
       <div>
@@ -102,7 +116,7 @@
 
   </footer>
 
-  
+
   <script src="./js/proyecto.js"></script>
 </body>
 

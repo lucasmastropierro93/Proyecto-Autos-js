@@ -12,6 +12,26 @@ let favoritos = [];
 localStorage.setItem("favoritos", JSON.stringify(autos));
 console.log(autos);
 
+const h1 = document.getElementById("h1");
+const h2 = document.getElementById("h2");
+const lista = document.getElementById("lista");
+const card = document.querySelectorAll("card");
+const a = document.getElementById("a");
+const a1 = document.getElementById("a1");
+const a2 = document.getElementById("a2");
+const a3 = document.getElementById("a3");
+const botonSearch = document.querySelector("#botonSearch");
+const inputSearch = document.querySelector("#inputSearch");
+const contenedor = document.querySelector('.contenedor');
+const contenidoCards = document.querySelector('.contenido__cards');
+const inputEmail = document.querySelector('.inputEmail');
+const inputPassword = document.querySelector('.inputPassword');
+const botonSearchLogin = document.getElementById("botonSearchLogin");
+const checkboxLogin = document.querySelector('.checkboxLogin');
+const inputFiltrarPrecio = document.querySelector('.inputFiltrarPrecio');
+const inputFiltrarMarca = document.querySelector('.inputFiltrarMarca');
+const inputFiltrarModelo = document.querySelector('.inputFiltrarModelo');
+h1.innerText = "-Compra y venta de autos usados-";
 // probado destructuring de autos
 
 for (const item of autos) {
@@ -29,26 +49,22 @@ function auto(id, modelo, marca, precio, img) {
     this.precio = precio;
     this.img = img;
 }
+function filtarPorPrecio(arr, filtro) {
+    return arr.filter((el) => {
+        return el.precio.includes(filtro);
+    });
+}
+function filtarPorModelo(arr, filtro) {
+    return arr.filter((el) => {
+        return el.modelo.includes(filtro);
+    });
+}
+function filtarPorMarca(arr, filtro) {
+    return arr.filter((el) => {
+        return el.marca.includes(filtro);
+    });
+}
 
-const h1 = document.getElementById("h1");
-const h2 = document.getElementById("h2");
-const lista = document.getElementById("lista");
-const card = document.querySelectorAll("card");
-const a = document.getElementById("a");
-const a1 = document.getElementById("a1");
-const a2 = document.getElementById("a2");
-const a3 = document.getElementById("a3");
-const botonSearch = document.querySelector("#botonSearch");
-const inputSearch = document.querySelector("#inputSearch");
-const contenedor = document.querySelector('.contenedor');
-const contenidoCards = document.querySelector('.contenido__cards');
-const inputEmail = document.querySelector('.inputEmail');
-const inputPassword = document.querySelector('.inputPassword');
-const botonSearchLogin = document.getElementById("botonSearchLogin");
-const checkboxLogin = document.querySelector('.checkboxLogin');
-
-
-h1.innerText = "-Compra y venta de autos usados-";
 // agregar las CARDS MEDIANTE JS
 
 function crearCards(autosFetch) {
@@ -125,29 +141,26 @@ function eliminarCard(event) {
 
 // BUSQUEDA Y FILTRADO POR CONSOLA MEDIANTE EVENT CLICK
 
-function filtrarModelo(arr, filtro) {
-    const filtrado = arr.filter(el => {
-        return el.modelo.includes(filtro);
-    })
-    return filtrado;
-}
+
 botonSearch.addEventListener('click', (e) => {
     e.preventDefault();
-    let resultado = filtrarModelo(autos, inputSearch.value);
+    
+    let resultado = filtarPorModelo(autos, inputSearch.value);
+    let resultado2 = filtarPorMarca(autos, inputSearch.value);
     console.log(resultado);
     Swal.fire(
         'Filtrado exitoso!',
         '',
         'success'
     )
+    contenidoCards.innerHTML = "";
+    crearCards(resultado);
+    crearCards(resultado2);
 })
 
-// RESULTADO DE BUSQUEDA EN HTML 
 
-inputSearch.addEventListener('input', () => {
-    let resultado = filtrarModelo(autos, inputSearch.value.toLowerCase())
-    h2.innerText = "Busqueda: " + `${resultado[0].modelo}`;
-})
+
+
 
 
 // LOGIN
@@ -227,3 +240,25 @@ async function fetchAPI() {
     }
 }
 fetchAPI();
+
+// funcion filtrado 
+
+inputFiltrarPrecio.addEventListener("input", () => {
+    let nuevoFiltro = filtarPorPrecio(autos, inputFiltrarPrecio.value);
+    console.log(nuevoFiltro);
+    contenidoCards.innerHTML = "";
+    crearCards(nuevoFiltro);
+});
+inputFiltrarModelo.addEventListener("input", () => {
+    let nuevoFiltro1 = filtarPorModelo(autos, inputFiltrarModelo.value);
+    console.log(nuevoFiltro1);
+    contenidoCards.innerHTML = "";
+    crearCards(nuevoFiltro1);
+});
+inputFiltrarMarca.addEventListener("input", () => {
+    let nuevoFiltro2 = filtarPorMarca(autos, inputFiltrarMarca.value);
+    console.log(nuevoFiltro2);
+    contenidoCards.innerHTML = "";
+    crearCards(nuevoFiltro2);
+});
+

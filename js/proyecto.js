@@ -51,8 +51,8 @@ const checkboxLogin = document.querySelector('.checkboxLogin');
 h1.innerText = "-Compra y venta de autos usados-";
 // agregar las CARDS MEDIANTE JS
 
-function crearCards() {
-    autos.forEach(auto => {
+function crearCards(autosFetch) {
+    autosFetch.forEach(auto => {
 
         const cardCreate = document.createElement('div')
         const contenidoCard = ` <div class="col">
@@ -70,14 +70,9 @@ function crearCards() {
         contenidoCards.append(cardCreate);
     });
 }
-crearCards();
+//crearCards(autos);
 
-// AGREGANDO CONTENIDO A FAVORITOS MEDIANTE EVENTO CLICK
-const agregarAFavoritos = document.querySelectorAll('.agregarAfavoritos');
 
-agregarAFavoritos.forEach(agregar => {
-    agregar.addEventListener('click', agregarAfavoritosClicked);
-})
 
 function agregarAfavoritosClicked(event) {
     const button = event.target;
@@ -215,9 +210,16 @@ async function fetchAPI() {
         const url = './js/data.json';
         const response = await fetch(url);
         const data = await response.json();
-        console.log(data);
-        
-        // DOMinic Toretto 
+
+        // DOM  
+        crearCards(data);
+
+        // AGREGANDO CONTENIDO A FAVORITOS MEDIANTE EVENTO CLICK
+        const agregarAFavoritos = document.querySelectorAll('.agregarAfavoritos');
+
+        agregarAFavoritos.forEach(agregar => {
+            agregar.addEventListener('click', agregarAfavoritosClicked);
+        })
 
 
     } catch (error) {
